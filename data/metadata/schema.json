@@ -1,0 +1,109 @@
+{
+  "generated_at": "2026-05-24T21:20:23.475776",
+  "seed": 42,
+  "volumes": {
+    "users": 10000,
+    "hosts": 2000,
+    "properties": 5000,
+    "bookings": 50000,
+    "payments": 48000,
+    "reviews": 30000,
+    "clickstream": 200000
+  },
+  "tables": {
+    "users": [
+      "user_id",
+      "user_uuid",
+      "name",
+      "email",
+      "phone",
+      "country",
+      "city",
+      "user_type",
+      "is_verified",
+      "created_at",
+      "last_login",
+      "total_spent"
+    ],
+    "hosts": [
+      "host_id",
+      "user_id",
+      "host_since",
+      "response_rate",
+      "response_time",
+      "is_superhost",
+      "total_listings"
+    ],
+    "properties": [
+      "property_id",
+      "property_uuid",
+      "host_id",
+      "title",
+      "description",
+      "property_type",
+      "room_type",
+      "accommodates",
+      "bedrooms",
+      "bathrooms",
+      "price_per_night",
+      "cleaning_fee",
+      "minimum_nights",
+      "maximum_nights",
+      "latitude",
+      "longitude",
+      "city",
+      "state",
+      "country",
+      "amenities",
+      "created_at"
+    ],
+    "bookings": [
+      "booking_id",
+      "booking_uuid",
+      "user_id",
+      "property_id",
+      "checkin_date",
+      "checkout_date",
+      "number_of_nights",
+      "number_of_guests",
+      "subtotal",
+      "cleaning_fee",
+      "total_price",
+      "status",
+      "cancellation_date",
+      "created_at",
+      "updated_at"
+    ],
+    "payments": [
+      "payment_id",
+      "booking_id",
+      "user_id",
+      "amount",
+      "payment_method",
+      "payment_status",
+      "payment_date",
+      "transaction_id",
+      "installments"
+    ],
+    "reviews": [
+      "review_id",
+      "booking_id",
+      "user_id",
+      "property_id",
+      "rating",
+      "comment",
+      "review_date",
+      "host_response"
+    ],
+    "clickstream": [
+      "event_id",
+      "user_id",
+      "session_id",
+      "event_type",
+      "property_id",
+      "search_query",
+      "device_type",
+      "event_timestamp"
+    ]
+  }
+}
