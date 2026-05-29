@@ -5,6 +5,56 @@ GO
 -- DIM_HOSTS (SCD Tipo 2)
 -- =====================================================
 
+USE ETL;
+GO
+
+-- =====================================================
+-- STAGING.TB_HOST (Anfitriões)
+-- =====================================================
+
+IF NOT EXISTS
+(
+    SELECT 1 FROM sys.tables
+    WHERE name = 'tb_host'
+    AND schema_id = SCHEMA_ID('staging')
+)
+BEGIN
+    CREATE TABLE staging.tb_host
+    (
+        host_id                 INT NOT NULL,
+        host_uuid               VARCHAR(36) NOT NULL,
+        user_id                 INT NOT NULL,
+        full_name               NVARCHAR(150) NOT NULL,
+        email                   NVARCHAR(320) NOT NULL,
+        phone                   VARCHAR(20) NULL,
+        host_since              DATE NOT NULL,
+        host_location           NVARCHAR(200) NULL,
+        response_rate           TINYINT NULL,
+        response_time           VARCHAR(30) NULL,
+        is_superhost            BIT NOT NULL DEFAULT 0,
+        total_listings          INT NOT NULL DEFAULT 0,
+        total_reviews_received  INT NOT NULL DEFAULT 0,
+        average_rating          DECIMAL(3,2) NULL,
+        valid_from              DATETIME2(0) NOT NULL DEFAULT SYSDATETIME(),
+        valid_to                DATETIME2(0) NOT NULL DEFAULT '9999-12-31 23:59:59',
+        is_current              BIT NOT NULL DEFAULT 1,
+        version_number          INT NOT NULL DEFAULT 1,
+        created_at              DATETIME2(0) NOT NULL DEFAULT SYSDATETIME(),
+        created_by              VARCHAR(100) NOT NULL DEFAULT SYSTEM_USER,
+        updated_at              DATETIME2(0) NULL,
+        updated_by              VARCHAR(100) NULL,
+        
+        CONSTRAINT PK_staging_tb_host PRIMARY KEY (host_id)
+    );
+    
+    PRINT '✅ Tabela staging.tb_host criada com sucesso!';
+END
+ELSE
+BEGIN
+    PRINT 'ℹ️ Tabela staging.tb_host já existe.';
+END
+GO
+
 IF NOT EXISTS
 (
     SELECT 1 FROM sys.tables

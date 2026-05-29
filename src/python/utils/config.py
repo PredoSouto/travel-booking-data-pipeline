@@ -20,24 +20,24 @@ SQL_SERVER_CONFIG = {
 
 # Configurações de volume de dados
 DATA_VOLUME = {
-    'users': 10000,
-    'hosts': 2000,
-    'properties': 5000,
-    'bookings': 50000,
-    'payments': 48000,
-    'reviews': 30000
+    'users': int(os.getenv('USERS_COUNT', 10000)),
+    'hosts': int(os.getenv('HOSTS_COUNT', 2000)),
+    'properties': int(os.getenv('PROPERTIES_COUNT', 5000)),
+    'bookings': int(os.getenv('BOOKINGS_COUNT', 50000)),
+    'payments': int(os.getenv('PAYMENTS_COUNT', 48000)),
+    'reviews': int(os.getenv('REVIEWS_COUNT', 30000))
 }
 
 # Configurações de logging
 LOGGING_CONFIG = {
-    'level': 'INFO',
+    'level': os.getenv('LOG_LEVEL', 'INFO'),
     'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    'file': 'logs/etl_pipeline.log'
+    'file': os.getenv('LOG_FILE', 'logs/etl_pipeline.log')
 }
 
 # Configurações de batch
 BATCH_CONFIG = {
-    'chunk_size': 1000,
-    'max_retries': 3,
-    'retry_delay': 5  # segundos
+    'chunk_size': int(os.getenv('CHUNK_SIZE', 1000)),
+    'max_retries': int(os.getenv('MAX_RETRIES', 3)),
+    'retry_delay': int(os.getenv('RETRY_DELAY', 5))
 }
