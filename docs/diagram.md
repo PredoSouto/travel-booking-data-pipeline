@@ -1,6 +1,6 @@
 # Data Warehouse - Travel Booking Star Schema
 
-```mermaid
+mermaid
 erDiagram
     dim_users {
         BIGINT user_sk PK
