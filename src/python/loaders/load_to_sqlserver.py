@@ -1,7 +1,7 @@
 """
 Módulo para carregar dados gerados no SQL Server
 Autor: Pedro Guilherme Souto de Oliveira
-Data: 2024
+Data: 2026
 """
 
 import pyodbc
